@@ -14,3 +14,48 @@ Preserves History: The revert operation is recorded as a new commit, so the proj
 Safe for Shared Repositories: Since it adds a new commit, it doesn’t rewrite the commit
  history, making it safe to use in shared branches (e.g., main, develop).
 
+Risks:
+Complexity in History: The commit history can become cluttered with multiple revert commits,
+ making it harder to follow the project’s evolution.
+ 
+Merge Conflicts: Reverting a commit may lead to conflicts if the same lines of 
+code were modified in subsequent commits.
+
+git reset
+
+git reset changes the state of the repository to a specific commit, effectively
+ discarding all subsequent changes. There are three modes: soft, mixed, and hard.
+ 
+Usage: Use git reset when you need to completely remove certain commits and are working on a local
+ or feature branch that hasn’t been shared yet.
+ 
+# Soft reset: Keeps changes in the staging area
+
+git reset --soft <commit-hash>
+
+# Mixed reset: Keeps changes in the working directory but not in the staging 
+area (default)
+
+git reset --mixed <commit-hash>
+
+# Hard reset: Discards all changes in the working directory and staging area
+
+git reset --hard <commit-hash>
+
+Advantages:
+
+Clean History: git reset can make the commit history cleaner by removing unwanted
+ commits entirely.
+ 
+Flexibility: The three modes (soft, mixed, hard) provide flexibility in how much
+ you want to undo and where you want the changes to be placed.
+ 
+Risks:
+
+Data Loss: Especially with --hard, it can permanently delete changes from the
+ working directory, which may be difficult or impossible to recover.
+ 
+Dangerous for Shared Repositories: Rewriting commit history (for shared branches) 
+can cause issues for other team members who have pulled the original commits, leading
+ to conflicts and confusion.
+
