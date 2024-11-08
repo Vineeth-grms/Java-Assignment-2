@@ -1,0 +1,110 @@
+Case Study 2: Git in Team Collaboration
+Question: A team of 5 developers is working on a feature branch. 
+Describe the process they should follow to keep their changes synchronized,
+ using git fetch, git pull, and git merge. Discuss potential merge conflicts 
+ and how they could be resolved.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Synchronization Process
+
+Daily Sync and Communication
+
+Developers should aim to sync their changes regularly, 
+ideally at the start and end of their workday. Effective
+ communication about who is working on what part of the feature
+  can help avoid conflicts.
+  
+Fetching Updates
+
+Developers should use git fetch to fetch the latest
+ changes from the remote repository. This command 
+ downloads objects and refs from another repository
+  but doesn’t integrate them into the working directory.
+  
+					git fetch origin 
+					
+Pulling Updates
+
+After fetching, developers should use git pull to integrate changes 
+from the remote repository into their local branch. git pull is essentially
+ a combination of git fetch and git merge.	
+ 
+				pull origin feature-branch
+				
+Merging Changes
+
+Before pushing their own changes, developers should ensure their local branch 
+is up-to-date by merging any changes fetched from the remote branch. 
+This can be done using git merge.
+
+				git merge origin/feature-branch
+				
+Resolving Conflicts
+
+If there are merge conflicts (differences in the same part of the code), Git will
+ prompt the developer to resolve them. Here’s how they can handle it:
+Open the conflicting files and look for lines marked with conflict markers 
+(e.g., <<<<<<<, =======, and >>>>>>>).Manually edit the lines to resolve the 
+conflict, ensuring the code is correct and functional.After resolving, mark the 
+conflicts as resolved:
+
+			git add <file-with-conflict>
+			git commit -m "Resolved merge conflict in <file>"
+			
+Pushing Changes
+
+Once their local branch is updated and conflicts (if any) are resolved, developers
+ can push their changes to the remote repository.
+ 
+			git push origin feature-branch
+			
+Handling Merge Conflicts
+
+
+Best Practices:
+
+Frequent Commits and Syncs: Committing and pulling changes frequently can help
+ minimize conflicts by keeping changes small and manageable.
+ 
+Clear Communication: Keeping the team informed about ongoing changes helps avoid
+ working on the same parts of the codebase.
+ 
+Branching Strategy: Following a consistent branching strategy (e.g., feature
+ branches, develop branch, etc.) can help organize changes and reduce conflicts.
+ 
+Code Reviews: Regular code reviews can catch potential conflicts early and ensure
+ code quality.
+
+# Developer A and B are working on the same feature branch
+
+# Developer A
+git checkout feature-branch
+# Make changes
+git add .
+git commit -m "Developer A's changes"
+git pull origin feature-branch
+# Resolve any conflicts if needed
+git push origin feature-branch
+
+# Developer B
+git checkout feature-branch
+git fetch origin
+git pull origin feature-branch
+# Make changes
+git add .
+git commit -m "Developer B's changes"
+git pull origin feature-branch
+# Resolve any conflicts if needed
+git push origin feature-branch
+
+Potential Merge Conflict Scenarios
+Simultaneous Modifications: Two developers modify the same lines of code in different
+ ways.
+ 
+Large Feature Integrations: Integrating a large feature branch with many changes into
+ the main branch may lead to conflicts.
+ 
+Refactoring: Structural changes to the codebase can cause conflicts with other 
+ongoing work.
+
+
+

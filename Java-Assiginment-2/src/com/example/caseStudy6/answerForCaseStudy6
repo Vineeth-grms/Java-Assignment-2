@@ -1,0 +1,16 @@
+git revert
+git revert creates a new commit that undoes the changes made by a specific commit. 
+This is useful when you want to maintain the history of changes but correct a specific
+ mistake.
+Usage:
+
+git revert <commit-hash>
+
+Advantages:
+
+Preserves History: The revert operation is recorded as a new commit, so the project’s
+ history remains intact and transparent.
+ 
+Safe for Shared Repositories: Since it adds a new commit, it doesn’t rewrite the commit
+ history, making it safe to use in shared branches (e.g., main, develop).
+
